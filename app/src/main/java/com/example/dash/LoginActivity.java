@@ -44,11 +44,12 @@ public class LoginActivity extends AppCompatActivity {
 
                             String password  = dataSnapshot.child(user+"/password").getValue(String.class);
                             String name = dataSnapshot.child(user+"/name").getValue(String.class);
-                            if(password.equals(userPassword.getText().toString())) {
-                                Intent launchActivity2 = new Intent(LoginActivity.this, home.class);
-                                startActivity(launchActivity2);
+                            if(password.equals(userPassword.getText().toString()))
+                            {
+                                Intent welcome = new Intent(LoginActivity.this,WelcomeActivity.class);
+                                welcome.putExtra("user_key",user);
+                                startActivity(welcome);
                             }
-                                //Toast.makeText(getApplicationContext(),"Welcome "+name,Toast.LENGTH_SHORT).show();
                             else
                                 Toast.makeText(getApplicationContext(),"Invalid password",Toast.LENGTH_SHORT).show();
                         }
@@ -69,6 +70,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-    }
+     }
 }
 
